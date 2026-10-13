@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tüm Etkinlikler - SDÜ Kampüs Etkinlikleri</title>
+  <link rel="stylesheet" href="css/2416501011.css">
+  <script type="module" src="event-list.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="header-ust">
+      <img 
+        src="https://upload.wikimedia.org/wikipedia/tr/0/05/S%C3%BCleyman_Demirel_%C3%9Cniversitesi_logo.png" 
+        alt="Süleyman Demirel Üniversitesi Amblemi" 
+        class="sdu-logo"
+      >
+      <h1>SDÜ Kampüs Etkinlikleri</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="etkinlikler.html">Etkinlikler</a></li>
+        <li><a href="etkinlik-ekle.html">Ekle</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Tüm Kampüs Etkinlikleri</h2>
+
+    <form id="filtre-formu" class="filtre">
+      <label for="arama">Etkinlik ara</label>
+      <input type="search" id="arama">
+      <label for="kategori-filtre">Kategori</label>
+      <select id="kategori-filtre">
+        <option value="">Tümü</option>
+      </select>
+    </form>
+
+    <p id="sonuc"></p>
+
+    <section id="etkinlik-listesi" class="etkinlikler-grid uc-sutun"></section>
+
+    <a href="index.html" class="geri-link" style="margin-top: 2rem;">&larr; Ana Sayfaya Dön</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ömer Salih Özen - 2416501011 | Süleyman Demirel Üniversitesi</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,87 @@
+export const events = [
+  {
+    id: "event-1",
+    title: "Kariyer Günleri 2026",
+    category: "Seminer",
+    date: "12-10-2026",
+    time: "14:00",
+    location: "A Blok Konferans Salonu",
+    capacity: 100,
+    description: "Mezunlarla kariyer söyleşileri ve şirket standları.",
+    image: "images/images.png"
+  },
+  {
+    id: "event-2",
+    title: "Robotik Atölyesi",
+    category: "Atölye",
+    date: "20-10-2026",
+    time: "10:00",
+    location: "Bilgisayar Laboratuvarı 2",
+    capacity: 20,
+    description: "Arduino ile çizgi izleyen robot yapımı, başlangıç seviyesi."
+  },
+  {
+    id: "event-3",
+    title: "Siber Güvenlik Söyleşisi",
+    category: "Söyleşi",
+    date: "27-10-2026",
+    time: "13:00",
+    location: "B Blok Amfi 1",
+    capacity: 50,
+    description: "Sektörden bir uzmanla güvenlik kariyeri üzerine sohbet."
+  },
+  {
+    id: "event-4",
+    title: "Web Tasarım Atölyesi",
+    category: "Atölye",
+    date: "03-11-2026",
+    time: "15:00",
+    location: "Bilgisayar Laboratuvarı 1",
+    capacity: 30,
+    description: "HTML ve CSS ile ilk kişisel sayfanı yap."
+  },
+  {
+    id: "event-5",
+    title: "Girişimcilik Söyleşisi",
+    category: "Söyleşi",
+    date: "12-11-2026",
+    time: "13:30",
+    location: "B Blok Amfi 2",
+    capacity: 80,
+    description: "Genç girişimcilerle tanışma ve soru-cevap."
+  },
+  {
+    id: "event-6",
+    title: "Yapay Zekâ ve Gelecek",
+    category: "Seminer",
+    date: "19-11-2026",
+    time: "15:00",
+    location: "A Blok 204",
+    capacity: 100,
+    description: "Yapay zekânın eğitim ve çalışma hayatındaki etkileri."
+  }
+];
+
+export function dateToISO(date) {
+  const [day, month, year] = date.split("-");
+  return `${year}-${month}-${day}`;
+}
+
+export function formatDate(date) {
+  const value = new Date(`${dateToISO(date)}T00:00:00`);
+  return value.toLocaleDateString("tr-TR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
+
+export function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+}
