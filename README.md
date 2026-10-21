@@ -1,4 +1,4 @@
-Canlı Yayın Linki: npx plugins add vercel/vercel-plugin
+Canlı Yayın Linki: https://web-teknolojileri-gh4h.vercel.app/
 
 # Sprint 4 — Vite, TypeScript ve React: Kampüs Etkinlikleri
 
