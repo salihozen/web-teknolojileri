@@ -1,0 +1,255 @@
+/* Ömer Salih Özen — 2416501011 */
+:root {
+  --no: 2416501011;
+  --ton: 291;
+  
+  --renk-ana: hsl(var(--ton) 65% 38%);
+  --renk-zemin: hsl(var(--ton) 30% 97%);
+  --renk-beyaz: #ffffff;
+  --renk-yazi: #222222;
+  --renk-gri: #666666;
+  --renk-hata: #d32f2f;
+  
+  --font: Verdana, sans-serif;
+  --bosluk-m: 1rem;
+  --kose: 8px;
+}
+
+/* Sıfırlama ve Temel Stiller */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--renk-zemin);
+  color: var(--renk-yazi);
+  line-height: 1.6;
+  padding: var(--bosluk-m);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header & Navigasyon Menüsü */
+header {
+  background-color: var(--renk-ana);
+  color: var(--renk-beyaz);
+  padding: var(--bosluk-m);
+  border-radius: var(--kose);
+  margin-bottom: var(--bosluk-m);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+nav a {
+  color: var(--renk-beyaz);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.15);
+  display: inline-block;
+  min-height: 44px;
+  line-height: 28px;
+}
+
+nav a:hover, nav a:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Ana İçerik Kaplayıcı */
+main {
+  background-color: var(--renk-beyaz);
+  padding: calc(var(--bosluk-m) * 1.5);
+  border-radius: var(--kose);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+h2 {
+  color: var(--renk-ana);
+  margin-bottom: var(--bosluk-m);
+}
+
+/* Kartlar ve Grid Yapısı */
+.etkinlikler-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--bosluk-m);
+  margin-top: var(--bosluk-m);
+}
+
+@media (min-width: 768px) {
+  .etkinlikler-grid.iki-sutun {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .etkinlikler-grid.uc-sutun {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Article Kart Stilleri */
+article.kart {
+  background-color: var(--renk-zemin);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 5px solid var(--renk-ana);
+  padding: var(--bosluk-m);
+  border-radius: var(--kose);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+article.kart h3 {
+  color: var(--renk-ana);
+  margin-bottom: 0.5rem;
+}
+
+article.kart p {
+  color: var(--renk-gri);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.detay-link {
+  color: var(--renk-ana);
+  font-weight: bold;
+  text-decoration: none;
+  align-self: flex-start;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.detay-link:hover {
+  text-decoration: underline;
+}
+
+/* Etkinlik Detay Sayfası Düzeni */
+.detay-konteyner {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--bosluk-m) * 1.5);
+}
+
+@media (min-width: 768px) {
+  .detay-konteyner {
+    flex-direction: row;
+  }
+  .detay-gorsel {
+    flex: 1;
+  }
+  .detay-bilgi {
+    flex: 1;
+  }
+}
+
+.detay-gorsel img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--kose);
+  object-fit: cover;
+}
+
+.detay-bilgi dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  margin-bottom: var(--bosluk-m);
+}
+
+.detay-bilgi dt {
+  font-weight: bold;
+  color: var(--renk-ana);
+}
+
+.detay-bilgi dd {
+  color: var(--renk-yazi);
+}
+
+/* Form Stilleri */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bosluk-m);
+  max-width: 600px;
+}
+
+.form-grup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+label {
+  font-weight: bold;
+  color: var(--renk-ana);
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--kose);
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: var(--renk-beyaz);
+}
+
+input:invalid,
+select:invalid,
+textarea:invalid,
+.hata-alani {
+  border-color: var(--renk-hata);
+  outline-color: var(--renk-hata);
+  background-color: #fff8f8;
+}
+
+button[type="submit"] {
+  background-color: var(--renk-ana);
+  color: var(--renk-beyaz);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: var(--kose);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  min-height: 48px;
+  align-self: flex-start;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+/* Footer ve Genel Bağlantılar */
+footer {
+  margin-top: calc(var(--bosluk-m) * 2);
+  text-align: center;
+  color: var(--renk-gri);
+  font-size: 0.85rem;
+}
+
+.geri-link {
+  display: inline-block;
+  margin-top: var(--bosluk-m);
+  color: var(--renk-ana);
+  text-decoration: none;
+  font-weight: bold;
+  min-height: 44px;
+}

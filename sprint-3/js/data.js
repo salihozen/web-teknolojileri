@@ -8,7 +8,7 @@ export const events = [
     location: "A Blok Konferans Salonu",
     capacity: 100,
     description: "Mezunlarla kariyer söyleşileri ve şirket standları.",
-    image: "images/images.png"
+    image: "afis.svg"
   },
   {
     id: "event-2",
