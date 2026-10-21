@@ -1,4 +1,4 @@
-Canlı Yayın Linki: https://web-teknolojileri-frontend.vercel.app
+Canlı Yayın Linki: npx plugins add vercel/vercel-plugin
 
 # Sprint 4 — Vite, TypeScript ve React: Kampüs Etkinlikleri
 
