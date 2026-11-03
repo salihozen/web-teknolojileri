@@ -1,6 +1,6 @@
 # Kampüs Etkinlikleri — Vize Projesi (Sprint 6)
 
-- **Canlı Yayın Linki (Vercel):** [https://web-teknolojileri-gh4h.vercel.app/](https://web-teknolojileri-gh4h.vercel.app/) *(veya [https://omersalihozen-frontend.vercel.app](https://omersalihozen-frontend.vercel.app))*
+- **Canlı Yayın Linki (Vercel):** [https://omersalihozen-frontend.vercel.app/](https://omersalihozen-frontend.vercel.app/) *(veya [https://web-teknolojileri-gh4h.vercel.app/](https://web-teknolojileri-gh4h.vercel.app/))*
 - **GitHub Deposu:** [https://github.com/salihozen/web-teknolojileri](https://github.com/salihozen/web-teknolojileri)
 - **Öğrenci:** Ömer Salih Özen
 - **Öğrenci No:** 2416501011 (Tema Tonu: `--ton: 291`)
@@ -56,7 +56,7 @@
    - Güncelleme: `/admin/:id/edit` üzerinden var olan etkinlik güncellendiğinde tüm sistemde güncellenir.
    - Silme: `/admin` tablosunda "Sil" butonuna basıldığında `window.confirm` ile onay istenir; onaylandığında etkinlik silinir ve tüm sayfalardan kalkar.
 7. ✅ **Son çalışır proje GitHub'a gönderildi.**
-8. ✅ **Proje Vercel'de yayında:** [https://web-teknolojileri-gh4h.vercel.app/](https://web-teknolojileri-gh4h.vercel.app/)
+8. ✅ **Proje Vercel'de yayında:** [https://omersalihozen-frontend.vercel.app/](https://omersalihozen-frontend.vercel.app/) *(veya [https://web-teknolojileri-gh4h.vercel.app/](https://web-teknolojileri-gh4h.vercel.app/))*
 9. ✅ **README yazıldı, Vercel linki README'ye eklendi.**
 10. ✅ **Mobil görünüm doğru çalışıyor:** Esnek grid yapısı, responsive tablo sarmalayıcısı ve mobil uyumlu navigasyon menüsü mevcuttur.
 11. ✅ **CSS bozulması yok, sayfa düzgün görünüyor:** Öğrenci numarasına göre hesaplanan `--ton: 291` HSL renk paleti ve belirgin kart çerçeveleri korunmuştur.
