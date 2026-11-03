@@ -12,3 +12,14 @@ export interface CampusEvent {
   image?: string;
 }
 
+export interface EventFormData {
+  title: string;
+  category: Category | "";
+  capacity: string;
+  date: string;
+  time: string;
+  location: string;
+  description: string;
+}
+
+export type EventFormErrors = Partial<Record<keyof EventFormData, string>>;

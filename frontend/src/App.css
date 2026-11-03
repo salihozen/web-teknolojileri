@@ -378,3 +378,98 @@ textarea[aria-invalid="true"] {
   outline-color: var(--renk-hata);
   background-color: #fff8f8;
 }
+
+/* Yönetim Tablosu ve Butonlar */
+.tablo-sarmalayici {
+  overflow-x: auto;
+  margin-top: 1rem;
+  border-radius: var(--kose);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.yonetim-tablosu {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: var(--renk-beyaz);
+}
+
+.yonetim-tablosu th,
+.yonetim-tablosu td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.yonetim-tablosu th {
+  background-color: var(--renk-zemin);
+  color: var(--renk-ana);
+  font-weight: bold;
+}
+
+.yonetim-tablosu tr:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.kategori-rozet {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background-color: var(--renk-zemin);
+  border: 1px solid var(--renk-ana);
+  color: var(--renk-ana);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tablo-islemler {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.buton-duzenle {
+  display: inline-block;
+  color: var(--renk-ana);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--renk-ana);
+  background-color: transparent;
+  transition: all 0.2s ease;
+  min-height: 36px;
+  line-height: 24px;
+}
+
+.buton-duzenle:hover {
+  background-color: var(--renk-ana);
+  color: var(--renk-beyaz);
+}
+
+.buton-sil {
+  background-color: #fff8f8;
+  color: var(--renk-hata);
+  border: 1px solid var(--renk-hata);
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  min-height: 36px;
+  line-height: 24px;
+  transition: all 0.2s ease;
+}
+
+.buton-sil:hover {
+  background-color: var(--renk-hata);
+  color: var(--renk-beyaz);
+}
+
+/* NavLink aktif durumu */
+nav a.aktif {
+  background-color: var(--renk-beyaz) !important;
+  color: var(--renk-ana) !important;
+}
+

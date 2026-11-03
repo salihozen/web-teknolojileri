@@ -1,6 +1,6 @@
 import type { CampusEvent } from "../types/campus-event";
 
-export const events: CampusEvent[] = [
+export const initialEvents: CampusEvent[] = [
   {
     id: "event-1",
     title: "Kariyer Günleri 2026",
@@ -64,3 +64,4 @@ export const events: CampusEvent[] = [
   }
 ];
 
+export const events = initialEvents;
