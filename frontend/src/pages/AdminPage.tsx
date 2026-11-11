@@ -39,7 +39,9 @@ export default function AdminPage() {
           <p>Henüz etkinlik yok.</p>
         </div>
       ) : (
-        <div className="tablo-sarmalayici">
+        <>
+          <p className="mobil-kaydir-ipucu">💡 Tabloyu sağa-sola kaydırarak tüm işlemleri görebilirsiniz.</p>
+          <div className="tablo-sarmalayici">
           <table className="yonetim-tablosu">
             <thead>
               <tr>
@@ -86,6 +88,7 @@ export default function AdminPage() {
             </tbody>
           </table>
         </div>
+        </>
       )}
     </section>
   );

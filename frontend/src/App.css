@@ -22,6 +22,11 @@
   padding: 0;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   font-family: var(--font);
   background-color: var(--renk-zemin);
@@ -381,14 +386,20 @@ textarea[aria-invalid="true"] {
 
 /* Yönetim Tablosu ve Butonlar */
 .tablo-sarmalayici {
+  display: block;
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-top: 1rem;
   border-radius: var(--kose);
   border: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
 }
 
 .yonetim-tablosu {
   width: 100%;
+  min-width: 520px;
   border-collapse: collapse;
   text-align: left;
   background-color: var(--renk-beyaz);
@@ -472,4 +483,51 @@ nav a.aktif {
   background-color: var(--renk-beyaz) !important;
   color: var(--renk-ana) !important;
 }
+
+/* Mobil Kaydırma İpucu ve Mobil Tablo İyileştirmeleri */
+.mobil-kaydir-ipucu {
+  font-size: 0.8rem;
+  color: var(--renk-gri);
+  margin-top: 0.5rem;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+  }
+  main {
+    padding: 0.85rem;
+  }
+  header {
+    padding: 0.85rem;
+  }
+  nav ul {
+    gap: 0.4rem;
+  }
+  nav a {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.88rem;
+    min-height: 40px;
+    line-height: 24px;
+  }
+  .yonetim-tablosu th,
+  .yonetim-tablosu td {
+    padding: 0.65rem 0.6rem;
+    font-size: 0.88rem;
+  }
+  .tablo-islemler {
+    gap: 0.35rem;
+  }
+  .buton-duzenle, .buton-sil {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.85rem;
+    min-height: 32px;
+    line-height: 20px;
+  }
+  .mobil-kaydir-ipucu {
+    display: block !important;
+  }
+}
+
 
