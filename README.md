@@ -71,6 +71,7 @@
 
 ## 🛠️ Yerel Geliştirme (Local Development)
 
+### Frontend (Sprint 6)
 ```bash
 cd frontend
 npm install
@@ -82,3 +83,17 @@ Derleme ve Kontrol:
 npm run build
 npm run lint
 ```
+
+### Backend (Sprint 7 — Express REST API)
+Detaylı REST API sözleşmesi ve dokümantasyon için [backend/README.md](./backend/README.md) dosyasına bakabilirsiniz.
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Sağlık kontrolü: `http://localhost:5000/health` (Dönen JSON: `student: "2416501011"`)
+Etkinlikler: `http://localhost:5000/events`
+Test istekleri koleksiyonu: `backend/requests/kampus-api.json`
+
