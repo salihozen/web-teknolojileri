@@ -1,0 +1,5 @@
+$kind: http-request
+description: GET /events - 200 OK · 6 kayıt
+url: http://localhost:3000/events
+method: GET
+order: 2000

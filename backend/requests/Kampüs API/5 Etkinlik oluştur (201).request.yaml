@@ -1,0 +1,19 @@
+$kind: http-request
+description: POST /events (tam body) - 201 Created · yeni id
+url: http://localhost:3000/events
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "title": "Git Atölyesi",
+      "category": "Atölye",
+      "capacity": 30,
+      "date": "2026-12-01",
+      "time": "14:00",
+      "location": "Bilgisayar Laboratuvarı 1",
+      "description": "Git ve GitHub ile ilk adımlar."
+    }
+order: 5000

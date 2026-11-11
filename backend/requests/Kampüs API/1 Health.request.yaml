@@ -1,0 +1,5 @@
+$kind: http-request
+description: GET /health - 200 OK · ok + time + student
+url: http://localhost:3000/health
+method: GET
+order: 1000

@@ -1,0 +1,13 @@
+$kind: http-request
+description: POST /events (sadece title) - 400 Bad Request · error.message
+url: http://localhost:3000/events
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "title": "Git Atölyesi"
+    }
+order: 6000

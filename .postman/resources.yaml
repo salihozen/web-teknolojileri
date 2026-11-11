@@ -1,0 +1,13 @@
+# Use this workspace to collaborate
+workspace:
+  id: e20fa884-635b-4fa5-83c5-11f80c88f626
+
+localResources:
+  collections:
+    - ../backend/requests/Kampüs API
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../backend/requests/Kampüs API: kampus-api-sprint-7
