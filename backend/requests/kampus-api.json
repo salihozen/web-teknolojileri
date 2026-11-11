@@ -1,0 +1,155 @@
+{
+  "info": {
+    "_postman_id": "kampus-etkinlikleri-api-sprint-7",
+    "name": "Kampüs Etkinlikleri REST API (Sprint 7)",
+    "description": "Kampüs Etkinlikleri Express REST API istek koleksiyonu. Öğrenci No: 2416501011 (Ömer Salih Özen)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. GET /health - Sağlık Kontrolü ve Öğrenci No",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ]
+        },
+        "description": "Sunucu sağlık durumunu ve öğrenci numarasını (2416501011) döner."
+      },
+      "response": []
+    },
+    {
+      "name": "2. GET /events - Tüm Etkinlikleri Listele",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ]
+        },
+        "description": "Sistemdeki tüm kayıtlı etkinlikleri JSON dizisi olarak listeler."
+      },
+      "response": []
+    },
+    {
+      "name": "3. GET /events/:id - Tek Etkinlik Getir (200 Başarılı)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events/event-1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events",
+            "event-1"
+          ]
+        },
+        "description": "Mevcut olan 'event-1' kimlikli etkinliğin detaylarını döner."
+      },
+      "response": []
+    },
+    {
+      "name": "4. GET /events/:id - Olmayan Etkinlik (404 Bulunamadı)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events/yok",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events",
+            "yok"
+          ]
+        },
+        "description": "Sistemde bulunmayan bir ID istendiğinde 404 Not Found ve hata mesajı döner."
+      },
+      "response": []
+    },
+    {
+      "name": "5. POST /events - Yeni Etkinlik Ekle (201 Başarılı)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Mobil Uygulama Geliştirme Hackathonu\",\n  \"category\": \"Yarışma\",\n  \"date\": \"2026-12-15\",\n  \"time\": \"09:00\",\n  \"location\": \"Mühendislik Fakültesi Konferans Salonu\",\n  \"capacity\": 50,\n  \"description\": \"24 saat sürecek mobil uygulama geliştirme maratonu.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ]
+        },
+        "description": "Tüm alanları eksiksiz gönderilen yeni etkinliği sisteme kaydeder ve 201 Created döner."
+      },
+      "response": []
+    },
+    {
+      "name": "6. POST /events - Eksik Veri ile İstek (400 Hatalı İstek)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Eksik Verili Etkinlik\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ]
+        },
+        "description": "Zorunlu alanlar eksik gönderildiğinde 400 Bad Request döner."
+      },
+      "response": []
+    }
+  ]
+}
