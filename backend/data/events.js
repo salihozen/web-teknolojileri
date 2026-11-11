@@ -31,13 +31,13 @@ export const events = [
   },
   {
     id: "event-4",
-    title: "Web Tasarım Atölyesi",
+    title: "Ömer Salih Özen ile Web Tasarım Atölyesi",
     category: "Atölye",
     capacity: 30,
     date: "2026-11-03",
     time: "15:00",
     location: "Bilgisayar Laboratuvarı 1",
-    description: "HTML ve CSS ile ilk kişisel sayfanı yap."
+    description: "Ömer Salih Özen tarafından düzenlenen HTML ve CSS ile ilk kişisel sayfanı yap atölyesi."
   },
   {
     id: "event-5",
