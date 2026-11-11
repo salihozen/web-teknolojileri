@@ -93,7 +93,7 @@ npm install
 npm run dev
 ```
 
-Sağlık kontrolü: `http://localhost:5000/health` (Dönen JSON: `student: "2416501011"`)
-Etkinlikler: `http://localhost:5000/events`
+Sağlık kontrolü: `http://localhost:3000/health` (Dönen JSON: `student: "2416501011"`)
+Etkinlikler: `http://localhost:3000/events`
 Test istekleri koleksiyonu: `backend/requests/kampus-api.json`
 

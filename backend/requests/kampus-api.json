@@ -1,94 +1,95 @@
 {
   "info": {
-    "_postman_id": "kampus-etkinlikleri-api-sprint-7",
-    "name": "Kampüs Etkinlikleri REST API (Sprint 7)",
-    "description": "Kampüs Etkinlikleri Express REST API istek koleksiyonu. Öğrenci No: 2416501011 (Ömer Salih Özen)",
+    "_postman_id": "kampus-api-sprint-7",
+    "name": "Kampüs API",
+    "description": "Kampüs Etkinlikleri Express REST API (Sprint 7). Öğrenci: 2416501011",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:5000",
-      "type": "string"
-    }
-  ],
   "item": [
     {
-      "name": "1. GET /health - Sağlık Kontrolü ve Öğrenci No",
+      "name": "1 Health",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/health",
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
           "host": [
-            "{{baseUrl}}"
+            "localhost"
           ],
+          "port": "3000",
           "path": [
             "health"
           ]
         },
-        "description": "Sunucu sağlık durumunu ve öğrenci numarasını (2416501011) döner."
+        "description": "GET /health - 200 OK · ok + time + student"
       },
       "response": []
     },
     {
-      "name": "2. GET /events - Tüm Etkinlikleri Listele",
+      "name": "2 Etkinlik listesi",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/events",
+          "raw": "http://localhost:3000/events",
+          "protocol": "http",
           "host": [
-            "{{baseUrl}}"
+            "localhost"
           ],
+          "port": "3000",
           "path": [
             "events"
           ]
         },
-        "description": "Sistemdeki tüm kayıtlı etkinlikleri JSON dizisi olarak listeler."
+        "description": "GET /events - 200 OK · 6 kayıt"
       },
       "response": []
     },
     {
-      "name": "3. GET /events/:id - Tek Etkinlik Getir (200 Başarılı)",
+      "name": "3 Tek etkinlik",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/events/event-1",
+          "raw": "http://localhost:3000/events/event-2",
+          "protocol": "http",
           "host": [
-            "{{baseUrl}}"
+            "localhost"
           ],
+          "port": "3000",
           "path": [
             "events",
-            "event-1"
+            "event-2"
           ]
         },
-        "description": "Mevcut olan 'event-1' kimlikli etkinliğin detaylarını döner."
+        "description": "GET /events/event-2 - 200 OK · event-2 detayı"
       },
       "response": []
     },
     {
-      "name": "4. GET /events/:id - Olmayan Etkinlik (404 Bulunamadı)",
+      "name": "4 Olmayan etkinlik (404)",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/events/yok",
+          "raw": "http://localhost:3000/events/yok",
+          "protocol": "http",
           "host": [
-            "{{baseUrl}}"
+            "localhost"
           ],
+          "port": "3000",
           "path": [
             "events",
             "yok"
           ]
         },
-        "description": "Sistemde bulunmayan bir ID istendiğinde 404 Not Found ve hata mesajı döner."
+        "description": "GET /events/yok - 404 Not Found · error.message"
       },
       "response": []
     },
     {
-      "name": "5. POST /events - Yeni Etkinlik Ekle (201 Başarılı)",
+      "name": "5 Etkinlik oluştur (201)",
       "request": {
         "method": "POST",
         "header": [
@@ -99,7 +100,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Mobil Uygulama Geliştirme Hackathonu\",\n  \"category\": \"Yarışma\",\n  \"date\": \"2026-12-15\",\n  \"time\": \"09:00\",\n  \"location\": \"Mühendislik Fakültesi Konferans Salonu\",\n  \"capacity\": 50,\n  \"description\": \"24 saat sürecek mobil uygulama geliştirme maratonu.\"\n}",
+          "raw": "{\n  \"title\": \"Git Atölyesi\",\n  \"category\": \"Atölye\",\n  \"capacity\": 30,\n  \"date\": \"2026-12-01\",\n  \"time\": \"14:00\",\n  \"location\": \"Bilgisayar Laboratuvarı 1\",\n  \"description\": \"Git ve GitHub ile ilk adımlar.\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -107,20 +108,22 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/events",
+          "raw": "http://localhost:3000/events",
+          "protocol": "http",
           "host": [
-            "{{baseUrl}}"
+            "localhost"
           ],
+          "port": "3000",
           "path": [
             "events"
           ]
         },
-        "description": "Tüm alanları eksiksiz gönderilen yeni etkinliği sisteme kaydeder ve 201 Created döner."
+        "description": "POST /events (tam body) - 201 Created · yeni id"
       },
       "response": []
     },
     {
-      "name": "6. POST /events - Eksik Veri ile İstek (400 Hatalı İstek)",
+      "name": "6 Eksik veri (400)",
       "request": {
         "method": "POST",
         "header": [
@@ -131,7 +134,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Eksik Verili Etkinlik\"\n}",
+          "raw": "{\n  \"title\": \"Git Atölyesi\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -139,15 +142,17 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/events",
+          "raw": "http://localhost:3000/events",
+          "protocol": "http",
           "host": [
-            "{{baseUrl}}"
+            "localhost"
           ],
+          "port": "3000",
           "path": [
             "events"
           ]
         },
-        "description": "Zorunlu alanlar eksik gönderildiğinde 400 Bad Request döner."
+        "description": "POST /events (sadece title) - 400 Bad Request · error.message"
       },
       "response": []
     }

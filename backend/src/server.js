@@ -1,9 +1,8 @@
-require("dotenv").config();
-const app = require("./app");
+import "dotenv/config";
+import app from "./app.js";
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Kampüs API sunucusu ${PORT} portunda çalışıyor...`);
-  console.log(`Sağlık kontrolü: http://localhost:${PORT}/health`);
+  console.log(`API: http://localhost:${PORT}`);
 });

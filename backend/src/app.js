@@ -1,17 +1,24 @@
-const express = require("express");
-const cors = require("cors");
-const healthRoutes = require("./routes/healthRoutes");
-const eventsRoutes = require("./routes/eventsRoutes");
+import express from "express";
+import cors from "cors";
+import eventRoutes from "./routes/event-routes.js";
 
 const app = express();
 
-// Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // body -> req.body
 
-// Routes
+// GET /health
+app.get("/health", (req, res) => {
+  res.json({
+    status: "ok",
+    time: new Date().toISOString(),
+    student: "2416501011"
+  });
+});
+
+// GET / (Kök rota bilgilendirmesi)
 app.get("/", (req, res) => {
-  res.status(200).json({
+  res.json({
     message: "Kampüs Etkinlikleri REST API Çalışıyor",
     student: "2416501011",
     endpoints: {
@@ -21,8 +28,11 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/health", healthRoutes);
-app.use("/events", eventsRoutes);
+app.use("/events", eventRoutes);
 
-module.exports = app;
+// Eşleşme yoksa (404)
+app.use((req, res) => {
+  res.status(404).json({ error: { message: "Route not found" } });
+});
 
+export default app;
