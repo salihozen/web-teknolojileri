@@ -1,12 +1,30 @@
 {
   "info": {
-    "name": "Kampüs API - Sprint 8",
-    "description": "Kampüs Etkinlikleri REST API - Postman Test Koleksiyonu (Ömer Salih Özen - 2416501011)",
+    "name": "Kampüs API - Sprint 8 (Ömer Salih Özen)",
+    "description": "Kampüs Etkinlikleri REST API ve MongoDB Atlas Entegrasyonu - Otomatik Doğrulama Testleri (2416501011)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
       "name": "1 Health",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Durum Kodu 200 OK', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Öğrenci Numarası Doğru (2416501011)', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.student).to.eql('2416501011');",
+              "    pm.expect(jsonData.status).to.eql('ok');",
+              "});"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
@@ -22,6 +40,24 @@
     },
     {
       "name": "2 Etkinlik listesi",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Durum Kodu 200 OK', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('MongoDB Veritabanından Etkinlikler Geldi', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.be.an('array');",
+              "    pm.expect(jsonData.length).to.be.at.least(6);",
+              "});"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
@@ -32,11 +68,29 @@
           "port": "3000",
           "path": ["events"]
         },
-        "description": "GET /events - 200 OK · 6 kayıt"
+        "description": "GET /events - 200 OK · MongoDB'den kayıtlar"
       }
     },
     {
       "name": "3 Tek etkinlik",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Durum Kodu 200 OK', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Doğru Etkinlik Detayı (event-2)', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.id).to.eql('event-2');",
+              "    pm.expect(jsonData.title).to.include('Robotik');",
+              "});"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
@@ -52,6 +106,24 @@
     },
     {
       "name": "4 Olmayan etkinlik (404)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Olmayan ID için 404 Not Found Döndü', function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "pm.test('Hata Mesajı Formatı Doğru', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.error).to.be.an('object');",
+              "    pm.expect(jsonData.error.message).to.eql('Event not found');",
+              "});"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
@@ -67,6 +139,24 @@
     },
     {
       "name": "5 Etkinlik oluştur (201)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Durum Kodu 201 Created (Kayıt Oluşturuldu)', function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "pm.test('Yeni Kayda Benzersiz ID Atandı', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property('id');",
+              "    pm.expect(jsonData.title).to.eql('Git Atölyesi');",
+              "});"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "POST",
         "header": [
@@ -91,6 +181,23 @@
     },
     {
       "name": "6 Eksik veri (400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Eksik Veri için 400 Bad Request Döndü', function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "pm.test('Sunucu Çökmedi ve Hata Mesajı Döndü', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.error).to.be.an('object');",
+              "});"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "POST",
         "header": [
