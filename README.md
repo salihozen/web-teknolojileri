@@ -84,16 +84,26 @@ npm run build
 npm run lint
 ```
 
-### Backend (Sprint 7 — Express REST API)
+### Backend (Sprint 8 — MongoDB & Mongoose REST API)
 Detaylı REST API sözleşmesi ve dokümantasyon için [backend/README.md](./backend/README.md) dosyasına bakabilirsiniz.
 
 ```bash
 cd backend
 npm install
-npm run dev
+npm run seed   # MongoDB veritabanına 6 başlangıç kaydı yükler (idempotent)
+npm run dev    # Express API sunucusunu başlatır
 ```
+
+#### Sprint 8 Kontrol Listesi & Doğrulama:
+- ✅ **1. npm install + npm run dev çalışıyor:** Sunucu sorunsuz başlar ve veritabanına bağlanır.
+- ✅ **2. Bağlantı ayrı modülde & URI .env'den okunuyor:** `backend/src/models/db.js` üzerinden `.env` içindeki `MONGODB_URI` kullanılır. `.env.example` şablonu mevcuttur.
+- ✅ **3. Schema kuralları:** `Event` şemasında `required`, `trim`, `timestamps: true` ve en az bir kısıt (`min`, `max`, `minlength`) mevcuttur.
+- ✅ **4. npm run seed:** 6 kayıt ekler; iki kez (veya defalarca) çalıştırılsa bile tam olarak 6 kayıt olmasını garanti eder.
+- ✅ **5. GET /events ve GET /events/:id:** MongoDB'den okur; olmayan ve geçersiz id'ler için 404 döner.
+- ✅ **6. POST /events:** 201 Created döner; eksik veri durumunda 400 döner ve sunucu çökmez.
+- ✅ **7. Kalıcılık:** Sunucu yeniden başlayınca POST ile eklenen kayıtlar veritabanında durur.
 
 Sağlık kontrolü: `http://localhost:3000/health` (Dönen JSON: `student: "2416501011"`)
 Etkinlikler: `http://localhost:3000/events`
-Test istekleri koleksiyonu: `backend/requests/kampus-api.json`
+Postman Koleksiyonu: `backend/requests/Kampus-API.postman_collection.json`
 

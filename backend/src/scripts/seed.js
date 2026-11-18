@@ -4,6 +4,7 @@ import dns from "node:dns";
 import { events } from "../data/events.js";
 import Event from "../models/event.js";
 
+// Okul/öğrenci ağlarında DNS çözümlemesini garantiye al
 try {
   dns.setServers(["8.8.8.8", "1.1.1.1"]);
 } catch (e) {}
@@ -15,28 +16,23 @@ async function seed() {
   await mongoose.connect(targetURI);
   console.log("Bağlantı başarılı!");
 
-  const existing = await Event.countDocuments();
-  console.log(`Mevcut kayıt sayısı: ${existing}`);
+  // İki kez veya daha fazla çalıştırıldığında da tam olarak 6 kayıt olmasını garanti et
+  await Event.deleteMany({});
+  console.log("Mevcut koleksiyon temizlendi.");
 
-  if (existing === 0) {
-    await Event.insertMany(events);
-    console.log(`${events.length} adet başlangıç etkinliği başarıyla yüklendi.`);
-  } else {
-    console.log("Veritabanında zaten kayıt mevcut. Güncelleniyor / korunuyor.");
-    for (const item of events) {
-      await Event.updateOne({ id: item.id }, { $set: item }, { upsert: true });
-    }
-    console.log("Etkinlikler güncellendi.");
-  }
+  await Event.insertMany(events);
+  console.log(`${events.length} adet başlangıç etkinliği başarıyla eklendi.`);
 
-  const all = await Event.find({});
-  console.log(`İşlem tamamlandı. Toplam kayıt: ${all.length}`);
+  const count = await Event.countDocuments();
+  console.log(`Koleksiyondaki toplam kayıt sayısı: ${count}`);
+
   await mongoose.connection.close();
+  console.log("Mongoose bağlantısı kapatıldı.");
 }
 
 seed()
   .then(() => process.exit(0))
   .catch((err) => {
-    console.error("Seed hatası:", err);
+    console.error("Seed hatası:", err.message || err);
     process.exit(1);
   });
