@@ -51,6 +51,14 @@ const eventSchema = new mongoose.Schema(
     timestamps: true, // timestamps kuralı
     toJSON: {
       transform: (doc, ret) => {
+        delete ret._id;
+        delete ret.__v;
+        return ret;
+      }
+    },
+    toObject: {
+      transform: (doc, ret) => {
+        delete ret._id;
         delete ret.__v;
         return ret;
       }

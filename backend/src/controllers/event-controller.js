@@ -8,7 +8,7 @@ export async function getEvents(req, res) {
     const { category } = req.query;
     if (mongoose.connection.readyState === 1) {
       const filter = category ? { category } : {};
-      const list = await Event.find(filter).lean();
+      const list = await Event.find(filter, { _id: 0, __v: 0 }).lean();
       return res.json(list);
     }
     const list = category
@@ -33,7 +33,7 @@ export async function getEventById(req, res) {
       const query = isObjectId
         ? { $or: [{ id }, { _id: id }, { id: `event-${id}` }] }
         : { $or: [{ id }, { id: `event-${id}` }] };
-      const event = await Event.findOne(query).lean();
+      const event = await Event.findOne(query, { _id: 0, __v: 0 }).lean();
       if (!event) {
         return res.status(404).json({ error: { message: "Event not found" } });
       }
@@ -76,13 +76,15 @@ export async function createEvent(req, res) {
 
     if (mongoose.connection.readyState === 1) {
       const created = await Event.create(newEventData);
-      return res.status(201).json(created);
+      const result = created.toObject ? created.toObject() : { ...created };
+      delete result._id;
+      delete result.__v;
+      return res.status(201).json(result);
     }
 
     defaultEvents.push(newEventData);
     return res.status(201).json(newEventData);
   } catch (err) {
-    // Mongoose validation hataları da 400 döner, sunucu kesinlikle çökmez
     if (err.name === "ValidationError") {
       return res.status(400).json({ error: { message: err.message } });
     }
@@ -98,8 +100,14 @@ export async function updateEvent(req, res) {
 
     if (mongoose.connection.readyState === 1) {
       const isObjectId = mongoose.isValidObjectId(id);
-      const query = isObjectId ? { $or: [{ id }, { _id: id }] } : { id };
-      const updated = await Event.findOneAndUpdate(query, updateData, { new: true, runValidators: true });
+      const query = isObjectId
+        ? { $or: [{ id }, { _id: id }, { id: `event-${id}` }] }
+        : { $or: [{ id }, { id: `event-${id}` }] };
+      const updated = await Event.findOneAndUpdate(query, updateData, {
+        new: true,
+        runValidators: true,
+        projection: { _id: 0, __v: 0 }
+      }).lean();
       if (!updated) return res.status(404).json({ error: { message: "Event not found" } });
       return res.json(updated);
     }
