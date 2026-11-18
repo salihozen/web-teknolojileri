@@ -30,7 +30,9 @@ export async function getEventById(req, res) {
 
     if (mongoose.connection.readyState === 1) {
       const isObjectId = mongoose.isValidObjectId(id);
-      const query = isObjectId ? { $or: [{ id }, { _id: id }] } : { id };
+      const query = isObjectId
+        ? { $or: [{ id }, { _id: id }, { id: `event-${id}` }] }
+        : { $or: [{ id }, { id: `event-${id}` }] };
       const event = await Event.findOne(query).lean();
       if (!event) {
         return res.status(404).json({ error: { message: "Event not found" } });
@@ -38,7 +40,7 @@ export async function getEventById(req, res) {
       return res.json(event);
     }
 
-    const event = defaultEvents.find((e) => e.id === id);
+    const event = defaultEvents.find((e) => e.id === id || e.id === `event-${id}`);
     if (!event) {
       return res.status(404).json({ error: { message: "Event not found" } });
     }
