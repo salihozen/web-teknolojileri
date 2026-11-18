@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import "./models/db.js";
 import eventRoutes from "./routes/event-routes.js";
 
 const app = express();
