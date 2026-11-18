@@ -30,6 +30,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/events", eventRoutes);
+app.use("/event", eventRoutes);
 
 // Eşleşme yoksa (404)
 app.use((req, res) => {
